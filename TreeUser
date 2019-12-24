@@ -1,4 +1,5 @@
 import os
+print("Test")
 print("Дерево каталогов пользователя: ")
 print(os.environ)
 print("Имя Пользователя: " + str(os.getlogin()))
