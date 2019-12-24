@@ -1,0 +1,39 @@
+import shutil
+actionCheck = True
+while(True):
+    while(actionCheck == True):
+        action = input("Введите операцию (file/dir): ")
+        if(action == "file" or action == "File" or action == "FILE"):
+            actionCheck = False
+        elif(action == "dir" or action == "Dir" or action == "DIR"):
+            actionCheck = False
+        else:
+            print("Вы не выбрали операцию или написали неправильно")
+            print("Повторите попытку")
+    onePath = input("Введите путь, который нужно скопировать: ")
+    twoPath = input("Введите путь, в который нужно поместить: ")
+    try:
+        if(action == "file" or action == "File" or action == "FILE"):
+            shutil.copy2(onePath, twoPath)
+            actionCheck = True
+        elif(action == "dir" or action == "Dir" or action == "DIR"):
+            shutil.copytree(onePath, twoPath)
+            actionCheck = True
+        else:
+            print("Вы не выбрали операцию или написали неправильно")
+            actionCheck = True
+    except (NotADirectoryError):
+        print("Ошибка - Вы выбрали файл, а не директорию (NotADirectoryError)")
+        actionCheck = True
+    except (FileNotFoundError):
+        print("Ошибка - Файл не найден (FileNotFoundError)")
+        actionCheck = True
+    end = input("Вы хотите выйти? (Y/N): ")
+    if(end == "Y" or end == "y"):
+        break
+    elif(end == "N" or end == "n"):
+        print("Continue")
+        pass
+    elif(end == end):
+        print("Pass")
+        pass
